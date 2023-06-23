@@ -5,6 +5,7 @@ export default {
     obtenerCategorias(){
         return api.get('/list.php?c=list');
     },
+    
     buscarRecetas({categoria, nombre}){
         // aplique destructuring de busqueda
     // buscarRecetas(busqueda){

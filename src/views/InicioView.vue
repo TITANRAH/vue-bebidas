@@ -1,21 +1,21 @@
 <script setup>
 import Receta from '../components/Receta.vue';
 import { useBebidasStore } from '../stores/bebidas';
-import { storeToRefs } from 'pinia';
 
 
-const store = useBebidasStore()
+
+const storeBebidas = useBebidasStore()
 
 
 </script>
 <template>
-    <h1 class="text-6xl font-extrabold">Recetas</h1>
+    <h1  class="text-6xl font-extrabold">{{ storeBebidas.noRecetas ? 'No hay Recetas' : 'Recetas' }}</h1>
 
     <div 
     class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 mt-10 gap-10"
     >
     <Receta
-    v-for="receta in store.recetas"
+    v-for="receta in storeBebidas.recetas"
     :receta ="receta"
     :key="receta.idDrink"
     />

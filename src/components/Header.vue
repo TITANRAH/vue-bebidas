@@ -1,14 +1,16 @@
 <script setup>
 
-import { RouterLink, useRoute } from 'vue-router';
 import { computed } from 'vue';
+import { RouterLink, useRoute } from 'vue-router';
 import { useBebidasStore } from '../stores/bebidas';
+import { useNotificacionStore } from '../stores/notificaciones';
 
 
 
 const route = useRoute()
 // APLICAR DESTRUCTURIN ROMPE LA REACTIVIDAD
 const store = useBebidasStore()
+const storeNotificaciones = useNotificacionStore()
 
 
 
@@ -19,6 +21,21 @@ const paginaInicio = computed(()=>route.name == 'inicio')
 // console.log(route)
 
 const handleSubmit = () => {
+
+  if(Object.values(store.busqueda).includes('')){
+    // asi o como abajo puedo llamar es mejor esta primera
+    storeNotificaciones.texto = 'Todos los campos son obligatorios'
+    storeNotificaciones.mostrar = true
+    storeNotificaciones.error = true
+
+    // storeNotificaciones.$patch({
+    //   texto: 'Todos los campos son obligatorios',
+    //   mostrar: true,
+    //   error: true
+    // })
+
+    return
+  }
 store.obtenerReceta()
 
 }
@@ -40,10 +57,10 @@ store.obtenerReceta()
                 </RouterLink>
               </div>
 
-              <nav class="flex gap-4">
+              <nav class="flex gap-4 text-white">
                 <router-link
                   :to="{name: 'inicio'}"
-                  class="text-white uppercase font-bold"
+                  class=" uppercase font-bold"
                   active-class="text-orange-500"
                 >
                   inicio

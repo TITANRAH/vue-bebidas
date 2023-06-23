@@ -1,22 +1,25 @@
 <script setup>
 import Header from './components/Header.vue';
 import { RouterView } from 'vue-router';
+import Modal from './components/Modal.vue';
+import Notificacion from './components/Notificacion.vue';
+
+
+
 
 
 
 </script>
 
 <template>
-<Header/>
+   <Header/>
 
- <main class="container mx-auto mt-10">
+   <main class="container mx-auto mt-10">
+      <RouterView />
+   </main>
 
-    <RouterView/>
-
-
- </main>
+   <Modal />
+   <Notificacion/>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

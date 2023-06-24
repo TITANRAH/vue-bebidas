@@ -16,6 +16,8 @@ const storeNotificaciones = useNotificacionStore()
 
 // propiedad computada para saber que estamos en la pagina de inicio
 // si la propiedad computada es inicio muestra el formulario
+// y lo se gracias a route name
+// y declarando las rutaas con el name
 const paginaInicio = computed(()=>route.name == 'inicio')
 
 // console.log(route)
